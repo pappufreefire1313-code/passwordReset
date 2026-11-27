@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <title>{{ 'Password Reset' if success else 'Reset Failed' }} - AawazSetu</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/password-reset.css') }}">
+</head>
+<body>
+
+<div class="form-container">
+    <h2>{{ 'Password Reset' if success else 'Reset Failed' }}</h2>
+
+    <div class="{{ 'success-msg' if success else 'error-msg' }}">{{ message }}</div>
+
+    {% if success %}
+        <a class="button" href="/login">Go to Login</a>
+    {% else %}
+        <a class="button" href="{{ url_for('password_reset.forgot_password') }}">Request a New Link</a>
+    {% endif %}
+</div>
+
+</body>
+</html>
